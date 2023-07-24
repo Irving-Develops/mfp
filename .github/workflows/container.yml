@@ -1,25 +1,25 @@
-name: deploy-container 
+name: deploy-container
 # Name of the workflow
 
 on:
-# Set the event that will trigger the workflow
+  # Set the event that will trigger the workflow
   push:
-  # Push event to the repository
+    # Push event to the repository
     branches:
-    # Set the branch to watch for changes
+      # Set the branch to watch for changes
       - main
     paths:
-    # Set the path to watch for changes
+      # Set the path to watch for changes
       - "packages/container/**"
 
 defaults:
-# Set the default values for jobs
+  # Set the default values for jobs
   run:
     working-directory: packages/container
     # Set the working directory for all jobs
 
 jobs:
-# Set the jobs to run
+  # Set the jobs to run
   build:
     runs-on: ubuntu-latest
     # Set the operating system to run the job on
