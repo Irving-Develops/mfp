@@ -4,16 +4,15 @@ on: # Set the event that will trigger the workflow
   push: # Push event to the repository
     branches: # Set the branch to watch for changes
       - main
-      - master
     paths: # Set the path to watch for changes
-      - 'packages/container/**'
+      - "packages/container/**"
 
 defaults: # Set the default values for jobs
-  run: 
+  run:
     working-directory: packages/container # Set the working directory for all jobs
 
 jobs: # Set the jobs to run
-  build: 
+  build:
     runs-on: ubuntu-latest # Set the operating system to run the job on
 
     steps:
@@ -27,5 +26,3 @@ jobs: # Set the jobs to run
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ""
-
-
