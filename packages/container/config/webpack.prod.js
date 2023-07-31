@@ -9,6 +9,7 @@ const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js", //done for cashing issues
+    publicPath: "/container/latest/"
   },
 
   plugins: [
