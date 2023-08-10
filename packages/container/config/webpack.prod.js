@@ -10,14 +10,14 @@ const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js", //done for cashing issues
-    publicPath: "/container/latest/"
+    publicPath: "/container/latest/",
   },
 
   plugins: [
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
+        marketing: `marketing@https://d276h9s8aq7fvu.cloudfront.net/marketing/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
