@@ -1,41 +1,41 @@
-name: deploy-container
-# Name of the workflow
+# name: deploy-container
+# # Name of the workflow
 
-on:
-  # Set the event that will trigger the workflow
-  push:
-    # Push event to the repository
-    branches:
-      # Set the branch to watch for changes
-      - main
-    paths:
-      # Set the path to watch for changes
-      - "packages/container/**"
+# on:
+#   # Set the event that will trigger the workflow
+#   push:
+#     # Push event to the repository
+#     branches:
+#       # Set the branch to watch for changes
+#       - main
+#     paths:
+#       # Set the path to watch for changes
+#       - "packages/container/**"
 
-defaults:
-  # Set the default values for jobs
-  run:
-    working-directory: packages/container
-    # Set the working directory for all jobs
+# defaults:
+#   # Set the default values for jobs
+#   run:
+#     working-directory: packages/container
+#     # Set the working directory for all jobs
 
-jobs:
-  # Set the jobs to run
-  build:
-    runs-on: ubuntu-latest
-    # Set the operating system to run the job on
+# jobs:
+#   # Set the jobs to run
+#   build:
+#     runs-on: ubuntu-latest
+#     # Set the operating system to run the job on
 
-    steps:
-      - uses: actions/checkout@v2
-      # Checkout the repository
-      - run: npm install
-      # Install dependencies
-      - run: npm run build
-      # Build the application
+#     steps:
+#       - uses: actions/checkout@v2
+#       # Checkout the repository
+#       - run: npm install
+#       # Install dependencies
+#       - run: npm run build
+#       # Build the application
 
-      - uses: shinyinc/action-aws-cli@v1.2
-      # Upload the build to S3
-      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest # Sync the build to S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
+#       - uses: shinyinc/action-aws-cli@v1.2
+#       # Upload the build to S3
+#       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest # Sync the build to S3
+#         env:
+#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           AWS_DEFAULT_REGION: us-east-1
