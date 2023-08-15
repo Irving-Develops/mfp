@@ -5,7 +5,6 @@ import MarketingApp from "./components/MarketingApp";
 import Header from "./components/Header";
 import { StylesProvider, createGenerateClassName } from "@material-ui/core";
 
-console.log(mount);
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",

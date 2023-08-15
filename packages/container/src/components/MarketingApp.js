@@ -1,16 +1,24 @@
-import React, {useEffect, useRef} from 'react'
-import {mount} from 'marketing/MarketingApp'
+import React, { useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import { mount } from "marketing/MarketingApp";
 
 const MarketingApp = () => {
-    const ref = useRef(null)
+  const ref = useRef(null);
 
-    useEffect(() => {
-        mount(ref.current)
-    }, [])
+  const history = useHistory();
 
-  return (
-    <div ref={ref}>MarketingApp</div>
-  )
-}
+  useEffect(() => {
+    mount(ref.current, {
+      onNavigate: ({ pathname: nextPathName }) => {
+        const { pathname } = history.location;
+        if (pathname !== nextPathName) {
+          history.push(nextPathName);
+        }
+      },
+    });
+  }, []);
 
-export default MarketingApp
+  return <div ref={ref}>MarketingApp</div>;
+};
+
+export default MarketingApp;
